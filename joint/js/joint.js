@@ -30,8 +30,8 @@
         .when("/stack", {
           templateUrl : "stack.html"
         })
-        .when("/resume", {
-          templateUrl : "resume.html"
+        .when("/development", {
+          templateUrl : "development.html"
         })
         .when("/main", {
           templateUrl : "main.html"
