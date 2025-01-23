@@ -1,0 +1,79 @@
+
+<style>
+	body { 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	}
+</style>
+
+<div class="row justify-content-center pt-3">	
+	<div class="col-sm-8">
+		<div class="card">
+			<div class="card-header text-center" style="background-color: black">
+				<h3 style="color: #ffffff;">Add Expense</h3>
+				<h5 class="text-success" ng-bind="createStatus"></h5>
+			</div>			
+			<div class="card-body">
+			<form name="createForm">
+				<div class="form-group">
+					<label for="name" class="font-weight-bold">Name:</label>
+					<input ng-model="expense.name" required ng-minlength="1" name="name"
+						type="text" class="form-control" id="name">					
+					<span ng-show="createForm.name.$touched && createForm.name.$invalid"
+						class="text-danger">
+						Required and must be at least one character.
+					</span>					
+				</div>
+				<div class="form-group">
+					<label for="user" class="font-weight-bold">User:</label>
+					<select ng-options="value.name for value in users" required name="user"
+						ng-model="expense.userId" class="form-control" id="user">
+					</select>
+					<span ng-show="createForm.user.$touched && createForm.user.$invalid"
+						class="text-danger">
+						Required
+					</span>	
+				</div>
+				<div class="form-group">
+					<label for="amount" class="font-weight-bold">Amount:</label>
+					<input ng-model="expense.amount" max="99999" min="0" required
+						type="number" class="form-control" id="amount" name="amount">					
+					<span ng-show="createForm.amount.$touched && createForm.amount.$invalid"
+						class="text-danger">
+						Required and must be between $0 and $99999, inclusive
+					</span>	
+				</div>
+				<div class="form-group">
+					<label for="isJoint" class="font-weight-bold">Joint Expense:</label>
+					<select ng-options="value for value in boolean" required name="isJoint"
+						ng-model="expense.isJoint" class="form-control" id="isJoint">
+					</select>					
+					<span ng-show="createForm.isJoint.$touched && createForm.isJoint.$invalid"
+						class="text-danger">
+						Required
+					</span>	
+				</div>
+				<div class="form-group">
+					<label for="isMonthly" class="font-weight-bold">Monthly Expense:</label>
+					<select ng-options="value for value in boolean" required name="isMonthly"
+						ng-model="expense.isMonthly" class="form-control" id="isMonthly">
+					</select>					
+					<span ng-show="createForm.isMonthly.$touched && createForm.isMonthly.$invalid"
+						class="text-danger">
+						Required
+					</span>	
+				</div>						
+			</form>
+		</div>
+		<div class="card-footer text-center" style="background-color: black">
+			<button type="button" class="btn btn-light"
+				ng-disabled="createForm.$invalid || disableCreate"
+				ng-click="createExpense()">Create</button>			
+			<button type="button" class="btn btn-light"
+				ng-click="clear()">Clear</button>
+		</div>
+		</div>
+	</div>	
+</div>

@@ -1,0 +1,76 @@
+<div class="row pt-4 pb-4">
+    <div class="col-sm-4">
+        <button type="button" ng-click="getFancy()" class="btn btn-success">Search</button>
+        <button type="button" ng-click="clearFancy()" class="btn btn-info">Clear</button>
+    </div>
+    <div class="col-sm-8">
+        <h2>Welcome to Fancy Search. Glad you're here!</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+
+        <table class="table table-bordered table-active">
+            <tr>
+                <td>
+                    <label class="font-weight-bold">Movie Language:</label><br>
+                    <label><input type="checkbox" ng-model="fancy.english" value="true" /> English:</label>
+                    <label><input type="checkbox" ng-model="fancy.french" value="true" /> French:</label><br>
+                    <label><input type="checkbox" ng-model="fancy.german" value="true" /> German:</label>
+                    <label><input type="checkbox" ng-model="fancy.spanish" value="true" /> Spanish:</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="font-weight-bold">Film Type:</label><br>
+                    <label><input type="radio" ng-model="fancy.media" value="color" /> Color</label>
+                    <br>
+                    <label><input type="radio" ng-model="fancy.media" value="blackandwhite" /> Black and
+                        White</label>
+                    <br>
+                    <label><input type="radio" ng-model="fancy.media" value="colorized" /> Colorized</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="font-weight-bold">Release Date Range:</label><br />
+                    <label>Start:</label><br>
+                    <input type="date" ng-model="fancy.startDate" placeholder="yyyy-MM-dd" min="1935-01-01"
+                        max="2025-01-01" /><br>
+                    <label>End:</label><br />
+                    <input type="date" ng-model="fancy.endDate" placeholder="yyyy-MM-dd" min="1935-01-01"
+                        max="2025-01-01" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="font-weight-bold" for="exampleInput">Pick a date and time:</label>
+                    <input type="datetime-local" id="exampleInput" name="input" ng-model="fancy.datetimevalue"
+                        min="{{datetime.min}}" max="{{datetime.max}}" required />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="font-weight-bold" for="exampleInput">Pick Movie By Title:</label>
+                    <select ng-model="selectedMovie" ng-options="movie.title for movie in movies">
+                        <option value="">-- choose movie title --</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-8">
+        <table class="table">
+            <tr class='text-success'>
+                <th>Movie ID</th>
+                <th>Title</th>
+                <th>Genre</th>
+            </tr>
+            <tr ng-repeat="movie in searchResults">
+                <td>{{movie.id}}</td>
+                <td>{{movie.title}}</td>
+                <td>{{movie.genre}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

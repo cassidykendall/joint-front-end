@@ -1,0 +1,30 @@
+body {
+    background-color: lightblue;
+  }
+  
+  h1 {
+    color: white;
+    text-align: left;
+    margin-left: 20px;
+    font-family: 'League Spartan';
+    font-weight: bolder;
+
+  }
+
+  p {
+    color: white;
+    font-family: 'League Spartan';
+    text-align: left;
+    font-size: 24px;
+  }
+
+  .joint-emphasis {
+    color: black;
+    font-weight: bold;
+  }
+
+  .joint-emphasis-italic {
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+  }

@@ -1,0 +1,91 @@
+<div class="row justify-content-center">
+	<div class="col-sm-7">
+		<div class="card bg-light">
+			<div class="card-header text-center" style="background-color: black">
+				<h3 style="color: white">Update Expense</h3>
+                <h5 class="text-success text-center" ng-bind="updateStatus"></h5>
+			</div>			
+		
+			<div class="card-body">
+			<form name="updateForm">
+				<div class="form-group">
+					<label for="name" class="font-weight-bold">Name:</label>
+					<input ng-model="expense.name" required ng-minlength="1" name="name"
+						type="text" class="form-control" id="name">
+                        <span class="text-danger" ng-if="!updateForm.name.$valid">
+                            required and must be at least 1 character in length
+                        </span>
+				</div>
+				<div class="form-group">
+					<label for="userId" class="font-weight-bold">User:</label>
+					<select ng-options="value.name for value in users"
+						ng-model="expense.userId" class="form-control" id="userId">
+					</select>
+					<span ng-show="updateForm.userId.$touched && updateForm.userId.$invalid"
+						class="text-danger" ng-if="!updateForm.userId.$valid">
+						required
+					</span>
+				</div>
+				<div class="form-group">
+					<label for="amount" class="font-weight-bold">Amount:</label>
+					<input ng-model="expense.amount" max="99999" min="0" required
+						type="number" class="form-control" id="amount" name="amount">
+                        <span class="text-danger" ng-if="!updateForm.amount.$valid">
+                            required and must be between $0 and $99999, inclusive
+                        </span>
+				</div>
+				<div class="form-group">
+					<label for="isJoint" class="font-weight-bold">Joint Expense:</label>
+					<select ng-options="value for value in boolean" required name="isJoint" 
+						ng-model="expense.isJoint" class="form-control" id="isJoint">
+					</select>					
+					<span ng-show="updateForm.isJoint.$touched && updateForm.isJoint.$invalid"
+						class="text-danger">
+						required
+					</span>	
+				</div>
+				<div class="form-group">
+					<label for="isMonthly" class="font-weight-bold">Monthly Expense:</label>
+					<select ng-options="value for value in boolean" required name="isMonthly"
+						ng-model="expense.isMonthly" class="form-control" id="isMonthly">
+					</select>					
+					<span ng-show="updateForm.isMonthly.$touched && updateForm.isMonthly.$invalid"
+						class="text-danger">
+						required
+					</span>	
+				</div>	
+				<div>
+					<span class="font-weight-bold">Expense ID:</span> <span
+						ng-bind="expense.id" id="id"></span>
+				</div>
+				<div>
+					<!-- <span class="font-weight-bold">Create Date:</span> <span
+						ng-bind="movie.createDateTime" id="create"></span>
+				</div>
+				<div>
+					<span class="font-weight-bold">Update Date:</span> <span
+						ng-bind="movie.updateDateTime | date:'short'" id="update"></span>
+				</div> -->
+			</form>
+			</div>
+		</div>
+		<div class="card-footer text-center" style="background-color: black">
+			<button type="button" class="btn btn-dark" 
+				ng-disabled="updateForm.$invalid || disableUpdate"
+				ng-click="updateExpense()">
+				Update</button>
+			<button type="button" class="btn btn-dark" 
+				ng-disabled="disableUpdate" 
+				ng-click="deleteExpense()">
+				Delete</button>
+			<button type="button" class="btn btn-dark"
+				ng-click="goToSearchView()">
+				Cancel</button>
+		</div>
+	</div>
+	<div class="col-sm-5">		
+		<div class="pt-5">
+		<!-- <img class="img-fluid rounded-circle" src="./image/movie_splash.jpg"> -->
+		</div>
+	</div>
+</div>

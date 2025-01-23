@@ -1,0 +1,39 @@
+<div class="card mt-3">
+	<div class="card-header" style="background-color: black;">
+		<h4 style="color: #ffffff;">Joint Budget</h4>
+        <button class="btn btn-light" ng-click="getAllExpenses(); getAllUsers()">Refresh Budget</button>
+		<span class="float-right" style="color:white">
+			Search: <input type="text" maxlength="15" ng-model="searchValue">
+		</span>
+	</div>
+	<div class="card-body">
+		<table class="table table-hover">
+			<thead class="thead-light">
+				<tr>
+					<!-- <th>Expense ID</th> -->
+					<th ng-click="orderByColumn('name')"> <button class="btn btn-dark">Expense Name</button></th>
+					<th ng-click="orderByColumn('userId')"> <button class="btn btn-dark">Creator</button></th>
+					<th ng-click="orderByColumn('amount')"> <button class="btn btn-dark">Amount</button></th>
+					<!-- <th>Create Date</th>					 -->
+				</tr>
+			</thead>
+			<tbody ng-show="!showSpinner">
+				<tr ng-repeat="expense in expenses | filter:searchValue | orderBy:orderByValue:reverse" ng-if="expense.isJoint == 'Y'" ng-click="goToUpdateView(expense.id)">
+					<!-- <td>{{expense.id}}</td> -->
+					<td>{{expense.name}}</td>
+					<td>{{expense.userName}}</td>
+					<td>${{expense.amount.toLocaleString()}}</td>
+					<!-- <td>{{movie.createDateTime | date:'medium'}}</td>					 -->
+				</tr>
+			</tbody>		
+		</table>	
+		<div ng-show="showSpinner" class="text-center pt-4">
+			<div class="spinner-border" style="width: 3rem; height: 3rem;"></div>
+			<br>
+			<p>Keeping it rolling...</p>
+		</div>
+	</div>
+	<div class="card-footer" style="background-color: black; color: white;">
+		Select an expense to update or delete it!
+	</div>
+</div>
