@@ -29,6 +29,7 @@
         $scope.getFancy = function () {    
             
             /* if an expense is selected from dropdown, just send the expense id*/
+            /* jake test */
             if ($scope.selectedExpense) {
                 $scope.fancy.selectedExpenseId = $scope.selectedExpense.id;
             } else {
